@@ -6,7 +6,7 @@ var lengthOfLongestSubstring = function(s) {
     let hash = [];
     let string = [];
     let pointer = 0;
-    let max;
+    let max = 0;
     for (let i = 0; i < s.length; i++) {
         for (let j = pointer; j < s.length; j++) {
             if (!string.includes(s[j])) {
@@ -17,20 +17,9 @@ var lengthOfLongestSubstring = function(s) {
                 break;
             }
         }
-        hash.push(string.join(""));
+        if(string.length > max)
+            max = string.length;
         string = [];
-    }
-    if(hash.length){
-        max = hash[0].length
-    }
-    else{
-        console.log(hash)
-        return 0;
-    }
-    for(let i = 1; i < hash.length; i++){
-        if(hash[i].length > max)
-            max = hash[i].length;
-    }
-    
+    } 
     return max;
-};
+}
